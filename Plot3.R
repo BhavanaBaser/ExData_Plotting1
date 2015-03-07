@@ -18,7 +18,7 @@ final_data$Date_Time <- paste(final_data[,1], final_data[,2],sep=" ")
 final_data$Date_Time <- as.POSIXct(final_data$Date_Time)
 
 ## Plotting a line graph and writing a legend
-par(mar = c(4,4,2,2), oma = c(0,0,2,0))
+png("plot3.png", width=480, height=480)
 with(final_data, {
   
   plot(Sub_metering_1 ~ Date_Time, type="l", ylab="Energy Sub metering", xlab="")
@@ -26,8 +26,5 @@ with(final_data, {
   lines(Sub_metering_3 ~ Date_Time, col = 'Blue')
 })
 legend("topright",col=c("black", "red", "blue"), lty=1, lwd=2, legend=c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
-
-
-## To copy the line graph in png file and then closing the png file
-dev.copy(png, file="plot3.png", height=480, width=480)
 dev.off()
+
